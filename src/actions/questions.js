@@ -1,6 +1,6 @@
 import {saveQuestion} from "../util/api";
 
-export const ADD_POLL = "ADD_POLL";
+export const ADD_QUESTIONS = "ADD_QUESTIONS";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 
 export function receiveQuestions(questions) {
@@ -12,7 +12,7 @@ export function receiveQuestions(questions) {
 
 function addQuestion(question) {
     return {
-        type: ADD_POLL,
+        type: ADD_QUESTIONS,
         question,
     };
 }
@@ -24,5 +24,4 @@ export function handleAddQuestion(firstOption, secondOption) {
         return saveQuestion(firstOption, secondOption, authedUser)
             .then((question) => dispatch(addQuestion(question)))
     };
-
 }

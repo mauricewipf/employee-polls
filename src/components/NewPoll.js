@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {useState} from "react";
-import {handleAddQuestion} from "../actions/polls";
+import {handleAddQuestion} from "../actions/questions";
 
 const NewPoll = ({dispatch}) => {
     const navigate = useNavigate();

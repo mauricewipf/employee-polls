@@ -1,5 +1,5 @@
 import {receiveUsers} from "./users";
-import {receiveQuestions} from "./polls";
+import {receiveQuestions} from "./questions";
 import {getInitialData} from "../util/api";
 
 export function handleInitialData() {
