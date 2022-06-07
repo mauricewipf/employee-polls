@@ -17,16 +17,18 @@ function App(props) {
 
   return (
     <div className="container">
-        <Nav/>
         {
-            true
+            !props.loggedIn
             ? <Login/>
-            : <Routes>
+            : <>
+                <Nav/>
+                <Routes>
                     <Route path="/" exact element={<Dashboard />} />
                     <Route path="/leaderboard" exact element={<Leaderboard />} />
                     <Route path="/questions/:id" element={<PollPage />} />
                     <Route path="/new" exact element={<NewPoll />} />
                 </Routes>
+            </>
         }
     </div>
   );
