@@ -8,6 +8,7 @@ import PollPage from "./components/PollPage";
 import {connect} from "react-redux";
 import Login from "./components/Login";
 import {handleInitialData} from "./actions/shared";
+import Leaderboard from "./components/Leaderboard";
 
 function App(props) {
     useEffect(() => {
@@ -22,6 +23,7 @@ function App(props) {
             ? <Login/>
             : <Routes>
                     <Route path="/" exact element={<Dashboard />} />
+                    <Route path="/leaderboard" exact element={<Leaderboard />} />
                     <Route path="/questions/:id" element={<PollPage />} />
                     <Route path="/new" exact element={<NewPoll />} />
                 </Routes>
@@ -31,7 +33,7 @@ function App(props) {
 }
 
 const mapStateToProps = ({authedUser}) => ({
-    // loading: authedUser === null,
+    loggedIn: !!authedUser,
 });
 
 export default connect(mapStateToProps)(App);
