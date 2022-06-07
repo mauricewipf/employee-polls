@@ -1,8 +1,8 @@
 let users = {
   sarahedo: {
-    id: 'sarahedo',
+    id: 'mauwi',
     password:'password123',
-    name: 'Sarah Edo',
+    name: 'Maurice Wipf',
     avatarURL: 'https://github.com/mauricewipf.png',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
