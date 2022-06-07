@@ -8,6 +8,8 @@ const Dashboard = (props) => {
     );
 }
 
-const mapStateToProps = ({}) => ({});
+const mapStateToProps = ({questions}) => ({
+    questions,
+});
 
 export default connect(mapStateToProps)(Dashboard);
