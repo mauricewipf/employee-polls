@@ -1,5 +1,5 @@
 let users = {
-  sarahedo: {
+  mauwi: {
     id: 'mauwi',
     password:'password123',
     name: 'Maurice Wipf',

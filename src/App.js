@@ -18,7 +18,7 @@ function App(props) {
     <div className="container">
         <Nav/>
         {
-            false
+            true
             ? <Login/>
             : <Routes>
                     <Route path="/" exact element={<Dashboard />} />
@@ -31,7 +31,7 @@ function App(props) {
 }
 
 const mapStateToProps = ({authedUser}) => ({
-    loading: authedUser === null,
+    // loading: authedUser === null,
 });
 
 export default connect(mapStateToProps)(App);

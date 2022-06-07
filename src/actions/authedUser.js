@@ -6,3 +6,13 @@ export function setAuthedUser(id) {
         id,
     };
 }
+
+export function handleLogin(username, password) {
+    return (dispatch, getState) => {
+        const { users } = getState();
+
+        const user = users.find((user) => user.id === username && user.password === password);
+        console.log(user);
+        return dispatch(setAuthedUser(user));
+    };
+}
