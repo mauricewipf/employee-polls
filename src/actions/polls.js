@@ -1,6 +1,14 @@
 import {saveQuestion} from "../util/api";
 
 export const ADD_POLL = "ADD_POLL";
+export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
+
+export function receiveQuestions(questions) {
+    return {
+        type: RECEIVE_QUESTIONS,
+        questions,
+    };
+}
 
 function addQuestion(question) {
     return {
