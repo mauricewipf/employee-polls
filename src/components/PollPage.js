@@ -32,11 +32,21 @@ const PollPage = ({dispatch, authedUser, question, author}) => {
             <div className={hasVotedForOptionOne ? "chosen" : ""}>
                 <p>{question.optionOne.text}</p>
                 <button onClick={handleOptionOne} disabled={hasVoted}>Click</button>
+                {
+                    hasVoted
+                    ? <p>Votes: {question.optionOne.votes.length}</p>
+                    : null
+                }
             </div>
 
             <div className={hasVotedForOptionTwo ? "chosen" : ""}>
                 <p>{question.optionTwo.text}</p>
                 <button onClick={handleOptionTwo} disabled={hasVoted}>Click</button>
+                {
+                    hasVoted
+                        ? <p>Votes: {question.optionTwo.votes.length}</p>
+                        : null
+                }
             </div>
         </div>
     );
