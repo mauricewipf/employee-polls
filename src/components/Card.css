@@ -1,3 +1,7 @@
 .card-container {
     border: antiquewhite solid medium;
 }
+
+.profile-image {
+    height: 150px;
+}
