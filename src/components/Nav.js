@@ -1,7 +1,14 @@
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
+import {handleLogout} from "../actions/authedUser";
 
-const Nav = (props) => {
+const Nav = ({dispatch, authedUserId}) => {
+
+    const logout = (e) => {
+        e.preventDefault();
+        dispatch(handleLogout());
+    }
+
     return (
         <nav className="nav">
             <ul>
@@ -14,9 +21,9 @@ const Nav = (props) => {
                 <li>
                     <Link to="/new">New Tweet</Link>
                 </li>
-                <li>User: {props.authedUserId}</li>
+                <li>User: {authedUserId}</li>
                 <li>
-                    <Link to="/">Logout</Link>
+                    <button onClick={logout} >Logout</button>
                 </li>
             </ul>
         </nav>
