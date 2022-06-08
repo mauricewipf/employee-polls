@@ -1,7 +1,7 @@
 import {saveQuestion, saveQuestionAnswer} from "../util/api";
 import {addAnswerUser} from "./users";
 
-export const ADD_QUESTIONS = "ADD_QUESTIONS";
+export const ADD_QUESTION = "ADD_QUESTION";
 export const ADD_ANSWER_QUESTION = "ADD_ANSWER";
 export const RECEIVE_QUESTIONS = "RECEIVE_QUESTIONS";
 
@@ -14,7 +14,7 @@ export function receiveQuestions(questions) {
 
 function addQuestion(question) {
     return {
-        type: ADD_QUESTIONS,
+        type: ADD_QUESTION,
         question,
     };
 }
