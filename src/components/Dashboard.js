@@ -1,4 +1,5 @@
 import {connect} from "react-redux";
+import Card from "./Card";
 
 const Dashboard = (props) => {
     return (
@@ -11,7 +12,7 @@ const Dashboard = (props) => {
                     .filter((question) => true) // TODO
                     .map((question) => (
                     <li key={question.id}>
-                        {question.id}
+                        <Card question={question}/>
                     </li>
                 ))}
             </ul>
@@ -22,7 +23,7 @@ const Dashboard = (props) => {
                     .filter((question) => true) // TODO
                     .map((question) => (
                     <li key={question.id}>
-                        {question.id}
+                        <Card question={question}/>
                     </li>
                 ))}
             </ul>
