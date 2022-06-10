@@ -10,15 +10,15 @@ import Login from "./components/Login";
 import {handleInitialData} from "./actions/shared";
 import Leaderboard from "./components/Leaderboard";
 
-function App(props) {
+function App({dispatch, loggedIn}) {
     useEffect(() => {
-        props.dispatch(handleInitialData());
+        dispatch(handleInitialData());
     } );
 
   return (
     <div className="container">
         {
-            !props.loggedIn
+            !loggedIn
             ? <Login/>
             : <>
                 <Nav/>
