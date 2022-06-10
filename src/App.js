@@ -16,7 +16,7 @@ function App({dispatch, loggedIn}) {
     } );
 
   return (
-    <div className="container">
+    <div className="container mx-auto py-4">
         {
             !loggedIn
             ? <Login/>
