@@ -10,22 +10,17 @@ const Nav = ({dispatch, authedUserId}) => {
     }
 
     return (
-        <nav className="nav">
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/leaderboard">Leaderboard</Link>
-                </li>
-                <li>
-                    <Link to="/new">New Tweet</Link>
-                </li>
-                <li>User: {authedUserId}</li>
-                <li>
-                    <button onClick={logout} >Logout</button>
-                </li>
-            </ul>
+        <nav className="flex justify-center space-x-4">
+            <Link to="/"
+               className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Home</Link>
+            <Link to="/leaderboard"
+               className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Leaderboard</Link>
+            <Link to="/new"
+               className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">New Tweet</Link>
+            <span
+               className="font-medium px-3 py-2 text-slate-700">User: {authedUserId}</span>
+            <button onClick={logout}
+                    className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Logout</button>
         </nav>
     );
 };
