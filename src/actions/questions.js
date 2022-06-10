@@ -1,5 +1,5 @@
 import {saveQuestion, saveQuestionAnswer} from "../util/api";
-import {addAnswerUser} from "./users";
+import {addAnswerUser, addQuestionUser} from "./users";
 
 export const ADD_QUESTION = "ADD_QUESTION";
 export const ADD_ANSWER_QUESTION = "ADD_ANSWER";
@@ -33,7 +33,10 @@ export function handleAddQuestion(firstOption, secondOption) {
         const { authedUser } = getState();
 
         return saveQuestion(firstOption, secondOption, authedUser)
-            .then((question) => dispatch(addQuestion(question)))
+            .then((question) => {
+                dispatch(addQuestion(question));
+                dispatch(addQuestionUser(question))
+            })
     };
 }
 
