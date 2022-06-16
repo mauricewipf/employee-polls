@@ -26,7 +26,7 @@ const Login = ({dispatch}) => {
 
     return (
         <div>
-            <h1 className="text-3xl font-bold mt-9">Login</h1>
+            <h1 className="text-3xl font-bold mt-9" data-testid="login-heading">Login</h1>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username" className="block text-sm font-medium text-slate-700">Username</label>
@@ -54,7 +54,7 @@ const Login = ({dispatch}) => {
                 </div>
                 <div className="mt-6 text-right">
                     <button type="submit"
-                        className="bg-sky-500 hover:bg-sky-700 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white">
+                            className="bg-sky-500 hover:bg-sky-700 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white">
                         Login
                     </button>
                 </div>
