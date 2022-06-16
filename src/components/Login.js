@@ -21,6 +21,8 @@ const Login = ({dispatch}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(handleLogin(username, password));
+        setUsername("");
+        setPassword("");
         navigate("/");
     };
 
