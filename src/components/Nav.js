@@ -19,7 +19,8 @@ const Nav = ({dispatch, authedUserId}) => {
                   className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">New
                 Poll</Link>
             <span
-                className="font-medium px-3 py-2 text-slate-700">User: {authedUserId}</span>
+                className="font-medium px-3 py-2 text-slate-700"
+                data-testid="user-information">User: {authedUserId}</span>
             <button onClick={logout}
                     className="font-medium px-3 py-2 text-slate-700 rounded-lg hover:bg-slate-100 hover:text-slate-900">Logout
             </button>
