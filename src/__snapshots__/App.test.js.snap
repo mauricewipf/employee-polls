@@ -32,7 +32,7 @@ Object {
                   id="username"
                   name="username"
                   type="text"
-                  value=""
+                  value="sarahedo"
                 />
               </div>
             </div>
@@ -54,7 +54,7 @@ Object {
                   id="password"
                   name="password"
                   type="password"
-                  value=""
+                  value="password123"
                 />
               </div>
             </div>
@@ -102,7 +102,7 @@ Object {
                 id="username"
                 name="username"
                 type="text"
-                value=""
+                value="sarahedo"
               />
             </div>
           </div>
@@ -124,7 +124,7 @@ Object {
                 id="password"
                 name="password"
                 type="password"
-                value=""
+                value="password123"
               />
             </div>
           </div>
