@@ -2,8 +2,19 @@ import {connect} from "react-redux";
 import {Navigate, useNavigate, useParams} from "react-router-dom";
 import {handleAddAnswer} from "../actions/questions";
 import "./PollPage.css";
+import {User} from "../models/User";
+import {Question} from "../models/Question";
+import React, {FormEvent} from "react";
+import {State} from "../models/State";
 
-const PollPage = ({dispatch, authedUser, question, author}) => {
+type Prop = {
+    dispatch: any,
+    authedUser: User,
+    question: Question,
+    author: User
+};
+
+const PollPage = ({dispatch, authedUser, question, author}: Prop) => {
     const navigate = useNavigate();
 
     if (!authedUser || !question || !author) {
@@ -14,19 +25,19 @@ const PollPage = ({dispatch, authedUser, question, author}) => {
     const hasVotedForOptionTwo = question.optionTwo.votes.includes(authedUser.id);
     const hasVoted = hasVotedForOptionOne || hasVotedForOptionTwo;
 
-    const handleOptionOne = (e) => {
+    const handleOptionOne = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionOne"));
         navigate("/");
     };
 
-    const handleOptionTwo = (e) => {
+    const handleOptionTwo = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionTwo"));
         navigate("/");
     };
 
-    const calcPercentage = (option, question) => {
+    const calcPercentage = (option: "optionOne" | "optionTwo", question: Question) => {
         const numberVotesTotal = question.optionOne.votes.length + question.optionTwo.votes.length;
         switch (option) {
             case "optionOne":
@@ -84,14 +95,13 @@ const PollPage = ({dispatch, authedUser, question, author}) => {
     );
 };
 
-const mapStateToProps = ({authedUser, users, questions}) => {
+const mapStateToProps = ({authedUser, users, questions}: State) => {
     try {
-        const question = Object.values(questions).find((question) => question.id === useParams().id);
-        const author = Object.values(users).find((user) => user.id === question.author);
+        const question: Question | any = Object.values(questions).find((question) => question.id === useParams().id);
+        const author: User | any = Object.values(users).find((user: User) => user.id === question.author);
         return {authedUser, question, author};
     } catch (e) {
-        return <Navigate to="/404"/>;
-        // throw new Error(`Question or user is not found.\n ${e}`);
+        return undefined;
     }
 };
 

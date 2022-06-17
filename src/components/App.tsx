@@ -11,8 +11,14 @@ import {handleInitialData} from "../actions/shared";
 import Leaderboard from "./Leaderboard";
 import Error404 from "./404";
 import PrivateRoute from "./PrivateRoute";
+import {State} from "../models/State";
 
-function App({dispatch, loggedIn}) {
+type Prop = {
+    dispatch: any,
+    loggedIn: boolean,
+};
+
+function App({dispatch, loggedIn}: Prop) {
     useEffect(() => {
         dispatch(handleInitialData());
     });
@@ -21,18 +27,18 @@ function App({dispatch, loggedIn}) {
         <div className="container mx-auto py-4">
             {loggedIn && <Nav/>}
             <Routes>
-                <Route path="/login" exact element={<Login/>}/>
+                <Route path="/login" element={<Login/>}/>
                 <Route path="/" element={<PrivateRoute><Dashboard/></PrivateRoute>}/>
-                <Route path="/leaderboard" exact element={<PrivateRoute><Leaderboard/></PrivateRoute>}/>
+                <Route path="/leaderboard" element={<PrivateRoute><Leaderboard/></PrivateRoute>}/>
                 <Route path="/questions/:id" element={<PrivateRoute><PollPage/></PrivateRoute>}/>
-                <Route path="/new" exact element={<PrivateRoute><NewPoll/></PrivateRoute>}/>
-                <Route path="/404" exact element={<Error404/>}/>
+                <Route path="/new" element={<PrivateRoute><NewPoll/></PrivateRoute>}/>
+                <Route path="/404" element={<Error404/>}/>
             </Routes>
         </div>
     );
 }
 
-const mapStateToProps = ({authedUser}) => ({
+const mapStateToProps = ({authedUser}: State) => ({
     loggedIn: !!authedUser,
 });
 

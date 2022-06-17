@@ -1,12 +1,21 @@
 import {connect} from "react-redux";
 import Card from "./Card";
+import {State} from "../models/State";
+import {Question} from "../models/Question";
+import React from "react";
+import {User} from "../models/User";
 
-const Dashboard = ({authedUser, questions, users}) => {
+type Prop = {
+    authedUser: User;
+    questions: Question[];
+    users: { [key: string]: User };
+}
+const Dashboard = ({authedUser, questions, users}: Prop) => {
 
-    const unanswered = (question) => (!question.optionOne.votes.includes(authedUser.id)
+    const unanswered = (question: Question) => (!question.optionOne.votes.includes(authedUser.id)
         && !question.optionTwo.votes.includes(authedUser.id));
 
-    const answered = (question) => (question.optionOne.votes.includes(authedUser.id)
+    const answered = (question: Question) => (question.optionOne.votes.includes(authedUser.id)
         || question.optionTwo.votes.includes(authedUser.id));
 
     return (
@@ -38,7 +47,7 @@ const Dashboard = ({authedUser, questions, users}) => {
     );
 }
 
-const mapStateToProps = ({authedUser, questions, users}) => ({
+const mapStateToProps = ({authedUser, questions, users}: State) => ({
     authedUser,
     questions: Object.values(questions).sort(
         (a, b) => b.timestamp - a.timestamp

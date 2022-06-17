@@ -1,6 +1,12 @@
+import React from "react";
 import {connect} from "react-redux";
+import {User} from "../models/User";
+import {State} from "../models/State";
 
-const Leaderboard = ({users}) => {
+type Prop = {
+    users: User[];
+}
+const Leaderboard = ({users}: Prop) => {
     return (
         <div>
             <h1 className="text-3xl font-bold mt-9">Leaderboard</h1>
@@ -32,7 +38,7 @@ const Leaderboard = ({users}) => {
     );
 };
 
-const mapStateToProps = ({users}) => ({
+const mapStateToProps = ({users}: State) => ({
     users: Object.values(users).sort((a, b) => Object.keys(b.answers).length - Object.keys(a.answers).length),
 });
 

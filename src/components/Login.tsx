@@ -1,9 +1,15 @@
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import {useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import {handleLogin} from "../actions/authedUser";
+import {State} from "../models/State";
 
-const Login = ({dispatch, loggedIn}) => {
+type Prop = {
+    dispatch: any,
+    loggedIn: boolean,
+}
+
+const Login = ({dispatch, loggedIn}: Prop) => {
     const [username, setUsername] = useState("sarahedo");
     const [password, setPassword] = useState("password123");
 
@@ -13,17 +19,17 @@ const Login = ({dispatch, loggedIn}) => {
         return <Navigate to={redirectUrl ? redirectUrl : "/"}/>;
     }
 
-    const handleUsername = (e) => {
+    const handleUsername = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setUsername(value);
     };
 
-    const handlePassword = (e) => {
+    const handlePassword = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setPassword(value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(handleLogin(username, password));
         setUsername("");
@@ -72,7 +78,7 @@ const Login = ({dispatch, loggedIn}) => {
     );
 };
 
-const mapStateToProps = ({authedUser}) => ({
+const mapStateToProps = ({authedUser}: State) => ({
     loggedIn: !!authedUser,
 });
 

@@ -1,24 +1,26 @@
 import {connect} from "react-redux";
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
+import React, {ChangeEvent, FormEvent, useState} from "react";
 import {handleAddQuestion} from "../actions/questions";
 
-const NewPoll = ({dispatch}) => {
+type Prop = { dispatch: any };
+
+const NewPoll = ({dispatch}: Prop) => {
     const navigate = useNavigate();
     const [firstOption, setFirstOption] = useState("");
     const [secondOption, setSecondOption] = useState("");
 
-    const handleFirstOptionChange = (e) => {
+    const handleFirstOptionChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setFirstOption(value);
     };
 
-    const handleSecondOptionChange = (e) => {
+    const handleSecondOptionChange = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         setSecondOption(value);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         dispatch(handleAddQuestion(firstOption, secondOption));
         navigate("/");

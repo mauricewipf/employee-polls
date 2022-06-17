@@ -1,13 +1,19 @@
 import {Navigate} from "react-router-dom";
 import {connect} from "react-redux";
+import {State} from "../models/State";
+import React from "react";
 
-const PrivateRoute = ({children, loggedIn}) => {
+type Prop = {
+    children: any,
+    loggedIn: boolean
+}
+const PrivateRoute = ({children, loggedIn}: Prop) => {
     const redirectUrl = window.location.href.toString().split(window.location.host)[1];
 
     return loggedIn ? children : <Navigate to={`/login?redirectTo=${redirectUrl}`}/>;
 };
 
-const mapStateToProps = ({authedUser}) => ({
+const mapStateToProps = ({authedUser}: State) => ({
     loggedIn: !!authedUser,
 });
 

@@ -1,10 +1,17 @@
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {handleLogout} from "../actions/authedUser";
+import {State} from "../models/State";
+import React, {FormEvent} from "react";
 
-const Nav = ({dispatch, authedUserId}) => {
+type Prop = {
+    dispatch: any,
+    authedUserId: string,
+};
 
-    const logout = (e) => {
+const Nav = ({dispatch, authedUserId}: Prop) => {
+
+    const logout = (e: FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
         dispatch(handleLogout());
     };
@@ -28,7 +35,7 @@ const Nav = ({dispatch, authedUserId}) => {
     );
 };
 
-const mapStateToProps = ({authedUser}) => ({
+const mapStateToProps = ({authedUser}: State) => ({
     authedUserId: authedUser.id,
 });
 

@@ -1,7 +1,10 @@
+import {User} from "../models/User";
+import {State} from "../models/State";
+
 export const SET_AUTHED_USER = "SET_AUTHED_USER";
 export const LOGOUT_AUTHED_USER = "LOGOUT_AUTHED_USER";
 
-export function setAuthedUser(authedUser) {
+export function setAuthedUser(authedUser: User) {
     return {
         type: SET_AUTHED_USER,
         authedUser,
@@ -14,8 +17,8 @@ export function logoutAuthedUser() {
     };
 }
 
-export function handleLogin(username, password) {
-    return (dispatch, getState) => {
+export function handleLogin(username: string, password: string) {
+    return (dispatch: any, getState: () => State) => {
         const {users} = getState();
 
         const user = Object.values(users).find((user) => user.id === username && user.password === password);
@@ -27,7 +30,7 @@ export function handleLogin(username, password) {
 }
 
 export function handleLogout() {
-    return (dispatch) => {
+    return (dispatch: any) => {
         return dispatch(logoutAuthedUser());
     };
 }
