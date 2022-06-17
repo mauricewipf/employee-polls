@@ -8,7 +8,9 @@ const Login = ({dispatch, loggedIn}) => {
     const [password, setPassword] = useState("password123");
 
     if (loggedIn) {
-        return <Navigate to="/"/>;
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirectUrl = urlParams.get('redirectTo');
+        return <Navigate to={redirectUrl ? redirectUrl : "/"}/>;
     }
 
     const handleUsername = (e) => {
