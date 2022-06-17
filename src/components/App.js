@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
 import './App.css';
-import Nav from "./components/Nav";
+import Nav from "./Nav";
 import {Route, Routes} from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import NewPoll from "./components/NewPoll";
-import PollPage from "./components/PollPage";
+import Dashboard from "./Dashboard";
+import NewPoll from "./NewPoll";
+import PollPage from "./PollPage";
 import {connect} from "react-redux";
-import Login from "./components/Login";
-import {handleInitialData} from "./actions/shared";
-import Leaderboard from "./components/Leaderboard";
-import Error404 from "./components/404";
-import PrivateRoute from "./components/PrivateRoute";
+import Login from "./Login";
+import {handleInitialData} from "../actions/shared";
+import Leaderboard from "./Leaderboard";
+import Error404 from "./404";
+import PrivateRoute from "./PrivateRoute";
 
 function App({dispatch, loggedIn}) {
     useEffect(() => {

@@ -2,9 +2,9 @@ import React from 'react';
 import {render} from '@testing-library/react';
 import App from './App';
 import {Provider} from "react-redux";
-import {store} from "./store";
+import {store} from "../store";
 import {BrowserRouter} from "react-router-dom";
-import {setAuthedUser} from "./actions/authedUser";
+import {setAuthedUser} from "../actions/authedUser";
 
 describe("App", () => {
     it("should render the component", () => {
