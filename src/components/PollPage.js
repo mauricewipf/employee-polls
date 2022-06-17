@@ -14,13 +14,13 @@ const PollPage = ({dispatch, authedUser, question, author}) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionOne"));
         navigate("/");
-    }
+    };
 
     const handleOptionTwo = (e) => {
         e.preventDefault();
         dispatch(handleAddAnswer(question.id, "optionTwo"));
         navigate("/");
-    }
+    };
 
     const calcPercentage = (option, question) => {
         const numberVotesTotal = question.optionOne.votes.length + question.optionTwo.votes.length;
@@ -63,13 +63,13 @@ const PollPage = ({dispatch, authedUser, question, author}) => {
 
                 <button onClick={handleOptionTwo} disabled={hasVoted}
                         className={"p-2 rounded-xl bg-zinc-100 hover:shadow-xl transition " + (hasVotedForOptionTwo ? "bg-lime-400" : "")}>
-                        <p className="font-bold mb-2">{question.optionTwo.text}</p>
-                        {!hasVoted &&
-                        <p className="underline underline-offset-4 mb-3">Click</p>
-                        }
-                        {hasVoted &&
-                        <p className="text-xs">Votes: {question.optionTwo.votes.length} ({calcPercentage("optionTwo", question)})</p>
-                        }
+                    <p className="font-bold mb-2">{question.optionTwo.text}</p>
+                    {!hasVoted &&
+                    <p className="underline underline-offset-4 mb-3">Click</p>
+                    }
+                    {hasVoted &&
+                    <p className="text-xs">Votes: {question.optionTwo.votes.length} ({calcPercentage("optionTwo", question)})</p>
+                    }
                 </button>
 
 
@@ -78,7 +78,7 @@ const PollPage = ({dispatch, authedUser, question, author}) => {
 
         </div>
     );
-}
+};
 
 const mapStateToProps = ({authedUser, users, questions}) => {
     try {

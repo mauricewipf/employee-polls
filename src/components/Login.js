@@ -1,12 +1,15 @@
 import {connect} from "react-redux";
-import {useNavigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {useState} from "react";
 import {handleLogin} from "../actions/authedUser";
 
-const Login = ({dispatch}) => {
-    const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+const Login = ({dispatch, loggedIn}) => {
+    const [username, setUsername] = useState("sarahedo");
+    const [password, setPassword] = useState("password123");
+
+    if (loggedIn) {
+        return <Navigate to="/"/>;
+    }
 
     const handleUsername = (e) => {
         const value = e.target.value;
@@ -23,7 +26,6 @@ const Login = ({dispatch}) => {
         dispatch(handleLogin(username, password));
         setUsername("");
         setPassword("");
-        navigate("/");
     };
 
     return (
@@ -68,4 +70,8 @@ const Login = ({dispatch}) => {
     );
 };
 
-export default connect()(Login);
+const mapStateToProps = ({authedUser}) => ({
+    loggedIn: !!authedUser,
+});
+
+export default connect(mapStateToProps)(Login);
